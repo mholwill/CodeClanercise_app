@@ -11,9 +11,9 @@ app.use(bodyParser.json());
 MongoClient.connect('mongodb://localhost:27017')
   .then(client => {
     const db = client.db('codeclanercise');
-    const exercisersCollection = db.collection('exercisers');
-    const exercisersRouter = createRouter(exercisersCollection);
-    app.use('/api/exercisers', exercisersRouter);
+    const clientsCollection = db.collection('clients');
+    const clientssRouter = createRouter(clientsCollection);
+    app.use('/api/clients', clientsRouter);
   })
   .catch(err => console.error(err));
 app.listen(3000, function() {
