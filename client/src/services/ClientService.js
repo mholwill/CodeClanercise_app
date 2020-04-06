@@ -1,7 +1,7 @@
 const baseURL = 'http://localhost:3000/api/clients/'
 
 export default {
-  getClient() {
+  getClients() {
     return fetch(baseURL)
     .then(res => res.json())
   },
