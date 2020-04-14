@@ -12,7 +12,7 @@ MongoClient.connect('mongodb://localhost:27017')
   .then(client => {
     const db = client.db('codeclanercise');
     const clientsCollection = db.collection('clients');
-    const clientssRouter = createRouter(clientsCollection);
+    const clientsRouter = createRouter(clientsCollection);
     app.use('/api/clients', clientsRouter);
   })
   .catch(err => console.error(err));

@@ -4,6 +4,7 @@ const errorLog = require('./error_log.js')
 
 const createRouter = function (collection) {
   const router = express.Router();
+
   router.get('/', (req, res) => {
     collection.find().toArray()
     .then(docs => res.json(docs))
@@ -42,7 +43,7 @@ const createRouter = function (collection) {
     )
     .then(result => res.json(result.value))
     .catch(errorLog)
-  })
+  });
   return router;
 };
 module.exports = createRouter;

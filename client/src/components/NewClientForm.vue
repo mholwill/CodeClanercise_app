@@ -14,7 +14,7 @@
       <label for="points">Number of points: </label>
       <input type="number" id="points" v-model="points">
     </div>
-    <input type="submit" id="save" value="Save Booking">
+    <input type="submit" id="save" value="Save Person">
   </form>
   </div>
 
@@ -25,7 +25,6 @@ export default {
   name: "client-form",
   data(){
     return{
-      newClient: {
         name: "",
         group: "",
         points: null
@@ -34,9 +33,14 @@ export default {
   },
   methods:{
     handleSubmit(){
-      eventBus.$emit('submit-client', this.newClient);
+      const payload = {
+        name: this.name,
+        group: this.group,
+        points: this.points
+      };
+      eventBus.$emit('submit-client', payload);
       this.name = "";
-      this.email = "";
+      this.group = "";
       this.points = null
     }
   }
