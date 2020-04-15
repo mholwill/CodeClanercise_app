@@ -1,14 +1,14 @@
 <template lang="html">
   <div id="client">
 
-        <p>Name: {{client.name}}</p>
-        <p>Group: {{client.group}}</p>
-        <p>Score: {{client.points}}</p>
+        <p>{{client.name}}</p>
+        <p>{{client.group}}</p>
+        <p><span>{{client.points}}</span> points</p>
 
 
       <form class="update-points" @submit="handleUpdate">
         <label for="points"></label>
-        <input type="number" name="points">
+        <input type="float" name="points"><br>
         <input type="submit" name="Update Points">
       </form>
 
@@ -24,7 +24,7 @@ export default {
   props: ['client'],
   methods: {
     handleUpdate(evt) {
-      this.client.points += parseInt(evt.target.elements[0].value)
+      this.client.points += parseFloat(evt.target.elements[0].value)
       console.log(evt);
       eventBus.$emit('update-client', this.client);
     }
@@ -35,12 +35,45 @@ export default {
 <style lang="css" scoped>
 
 #client {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  background-color: #d9e8f2;
+  border: 1px solid #62a1c9;
+  padding: 1.5em 3em;
+  border-radius: 2em;
+  width: 30%;
+  margin: 2%;
+  flex-basis: 30%;
+  min-width: 200px;
+}
+
+#client > p {
+  padding: 0.2em 0;
+  font-size: 1.4em;
+}
+
+#client > p span{
+  color: #62a1c9;
+  font-weight: bold;
+}
+
+input[type=submit] {
+  padding: 0.5em 1em;
+  background-color: #62a1c9;
+  border-radius: 2em;
+  color: ghostwhite;
+  font-size: 1em;
+  margin-top: 1em;
+}
+
+input[type=submit]:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+input[type=float] {
+  border-radius: 2em;
+  padding: 0.5em;
+  border: none;
+  margin-top: 1em;
 }
 
 </style>

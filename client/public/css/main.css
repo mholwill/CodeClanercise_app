@@ -1,6 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  background-color: #ebf8ff;
+  background-color: ghostwhite;
   background-size: auto;
   height: 100%;
   width: 100%;
+  font-family: Montserrat, Helvetica, sans-serif;
+  text-align: center;
 }

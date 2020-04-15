@@ -17,4 +17,12 @@ export default {
 
 <style lang="css" scoped>
 
+#clientsList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 90%;
+  margin: 0 5%;
+}
+
 </style>

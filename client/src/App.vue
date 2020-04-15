@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img src="../public/images/CCE.png" alt="CodeClanercise Image">
+    <img src="../public/images/CCE_2.png" alt="CodeClanercise Image">
     <client-form />
     <client-list :clients="clients" />
 
@@ -51,12 +51,9 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
+  img {
+    padding: 2em 0 1em 0;
+  }
+
 </style>
