@@ -26,18 +26,26 @@ export default {
     "client-list": ClientList
   },
   mounted(){
-    ClientService.getClients()
-    .then(data => this.clients = data)
+    this.getClients()
 
     eventBus.$on('submit-client', payload => {
       ClientService.postClient(payload)
       .then(client => this.clients.push(client))
+      .then(this.getClients())
     })
 
-    eventBus.$on('update-client', (payload) => {
-      ClientService.updateScore(payload)
+      eventBus.$on('update-client', newScore => {
+      const index = this.clients.findIndex(client => client._id === newScore._id)
+      this.clients[index] = newScore
+      ClientService.updateClient(newScore)
+      .then(this.getClients())
+    });
+  },
+  methods: {
+    getClients () {
+      ClientService.getClients()
       .then(data => this.clients = data)
-   })
+    }
   }
 }
 </script>

@@ -37,7 +37,7 @@ export default {
       const payload = {
         name: this.name,
         group: this.group,
-        points: this.points
+        points: parseInt(this.points)
       };
       eventBus.$emit('submit-client', payload);
       this.name = "";

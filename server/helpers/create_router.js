@@ -19,7 +19,7 @@ const createRouter = function(collection) {
 
   router.get('/:id', (req, res) => {
     const id = req.params.id;
-    collection.findOne({_id: ObjectId(id)})
+    collection.findOne({_id: ObjectID(id)})
     .then((doc) => res.json(doc))
     .catch((err) => {
       console.error(err)
@@ -41,6 +41,39 @@ const createRouter = function(collection) {
       res.json({ status: 500, error: err });
     });
   });
+  //
+  // router.put('/:id', (req, res) => {
+  //   const id = req.params.id;
+  //   const updatedData = req.body;
+  //   delete updatedData._id;
+  //
+  //   collection
+  //   .findOneAndUpdate({ _id: ObjectID(id) }, { $set: updatedData })
+  //   .then(result => {
+  //     res.json(result.value);
+  //   })
+  //   .catch((err) => {
+  //     res.status(500);
+  //     res.json({ status: 500, error: err });
+  //   });
+  // });
+
+  router.patch('/:id', (req, res) => {
+    const id = req.params.id;
+    const changedData = req.body;
+    delete changedData._id;
+    collection.findOneAndUpdate(
+      {_id: ObjectID(id)},
+      {$set: changedData},
+      {returnOriginal: false}
+    )
+    .then(result => res.json(result.value))
+    .catch((err) => {
+      console.error(err);
+      res.status(500);
+      res.json({ status: 500, error: err });
+    });
+  })
 
   return router;
 };

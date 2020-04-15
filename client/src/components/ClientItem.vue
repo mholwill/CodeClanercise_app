@@ -1,18 +1,17 @@
 <template lang="html">
   <div id="client">
-    <details>
-      <summary>
-        {{client.name}}
-        {{client.group}}
-        {{client.points}}
-      </summary>
 
-      <form class="update-points">
+        <p>Name: {{client.name}}</p>
+        <p>Group: {{client.group}}</p>
+        <p>Score: {{client.points}}</p>
+
+
+      <form class="update-points" @submit="handleUpdate">
         <label for="points"></label>
-        <input type="number" name="points" :value="client.points">
+        <input type="number" name="points">
         <input type="submit" name="Update Points">
       </form>
-    </details>
+
   </div>
 
 </template>
@@ -25,7 +24,8 @@ export default {
   props: ['client'],
   methods: {
     handleUpdate(evt) {
-      this.client.points = evt.target.elements[2].value
+      this.client.points += parseInt(evt.target.elements[0].value)
+      console.log(evt);
       eventBus.$emit('update-client', this.client);
     }
   }
