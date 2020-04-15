@@ -7,3 +7,4 @@ db.clients.insertMany([
     group: "E37",
     points: 4
   }
+])

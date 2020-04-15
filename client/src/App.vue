@@ -9,9 +9,10 @@
 
 <script>
 import {eventBus} from "./main.js";
+import ClientService from "./services/ClientService";
 import NewClientForm from "./components/NewClientForm";
 import ClientItem from "./components/ClientItem";
-import ClientList from "./components/ClientList"
+import ClientList from "./components/ClientList";
 
 export default {
   name: 'App',
