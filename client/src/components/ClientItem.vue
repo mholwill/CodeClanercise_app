@@ -2,7 +2,7 @@
   <div id="client">
     <details>
       <summary>
-        <b>{{client.name}}</b>
+        {{client.name}}
         {{client.group}}
         {{client.points}}
       </summary>
@@ -18,6 +18,8 @@
 </template>
 
 <script>
+import {eventBus} from '../main.js'
+
 export default {
   name: "client",
   props: ['client'],
@@ -31,4 +33,14 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
+#client {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+
 </style>

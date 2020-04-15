@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>CodeClanercise</h1>
+    <img src="../public/images/CCE.png" alt="CodeClanercise Image">
     <client-form />
     <client-list :clients="clients" />
 
@@ -34,6 +34,10 @@ export default {
       .then(client => this.clients.push(client))
     })
 
+    eventBus.$on('update-client', (payload) => {
+      ClientService.updateScore(payload)
+      .then(data => this.clients = data)
+   })
   }
 }
 </script>
