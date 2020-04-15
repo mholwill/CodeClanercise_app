@@ -29,7 +29,6 @@ export default {
         group: "",
         points: null
       }
-    }
   },
   methods:{
     handleSubmit(){
